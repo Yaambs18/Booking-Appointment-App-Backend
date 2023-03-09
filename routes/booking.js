@@ -8,6 +8,8 @@ router.get('/', bookingController.getBookingUsers);
 
 router.post('/', bookingController.addUserBooking);
 
+router.put('/:userId', bookingController.updateUserBooking);
+
 router.delete('/:userId', bookingController.deleteUserBooking);
 
 module.exports = router;

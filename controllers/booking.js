@@ -21,6 +21,23 @@ exports.addUserBooking = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
+exports.updateUserBooking = (req, res, next) => {
+    const userId = req.params.userId;
+    const updatedName = req.body.name;
+    const updatedEmail = req.body.email;
+    User.findByPk(userId)
+      .then(user => {
+        console.log(user);
+        user.name = updatedName;
+        user.email = updatedEmail;
+        return user.save();
+      })
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => console.log(err));
+}
+
 exports.deleteUserBooking = (req, res, next) => {
     const userId = req.params.userId;
     User.findByPk(userId)
